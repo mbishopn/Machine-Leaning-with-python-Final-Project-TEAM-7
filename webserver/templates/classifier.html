@@ -15,7 +15,7 @@
         <p>Please enter in your Age:<input type="text" id="age" name="age" placeholder="Age"></p>
         <p>Please enter in you Sex:<input type="text" id="sex" name="sex" placeholder="male/female"></p>
         <p>Please enter in your CP:<input type="text" id="cp" name="cp" placeholder="CP"></p>
-        <p>Please enter in your TrestBPS:<input type="text" id="trest" name="trest" placeholder="TrestBPS"></p>
+        <p>Please enter in your TrestBPS:<input type="text" id="trestbps" name="trestbps" placeholder="TrestBPS"></p>
         <p>Please enter in your Chol:<input type="text" id="chol" name="chol" placeholder="Chol"></p>
         <p>Please enter in your FBS:<input type="text" id="fbs" name="fbs" placeholder="FBS"></p>
         <p>Please enter in your Restecg:<input type="text" id="restecg" name="restecg" placeholder="Restecg"></p>
@@ -25,6 +25,8 @@
         <p>Please enter in your Slope:<input type="text" id="slope" name="slope" placeholder="Slope"></p>
         <p>Please enter in your CA:<input type="text" id="ca" name="ca" placeholder="CA"></p>
         <p>Please enter in your Thal:<input type="text" id="thal" name="thal" placeholder="Thal"></p>
+        <input type="hidden" id="ca_na" name="ca_na" value="0">
+        <input type="hidden" id="thal_na" name="thal_na" value="0">
         <br/>
         <input type="submit" value="data">
     </form>
@@ -32,8 +34,7 @@
     <div>
         {%if pred[0]==0:%}
         NO HEART DISEASE PRESENT
-        {%endif%}
-        {%if pred[0]==1:%}
+        {%elif pred[0]==1:%}
         HEART DISEASE PRESENT
         {%else:%}
         Fill the form to make a prediction
