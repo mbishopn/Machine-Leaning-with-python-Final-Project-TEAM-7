@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLC Cornwall - Machine Learning with Python - GROUP 7</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>Classification Dataset</h1>
+            <div>
+                <p>This dataset contains 14 variables, it's a subset from a bigger dataset containing data used to predict heart disease presence.</p>
+                <div style="display:flex;">
+                    <table style="border:1px solid">
+                        <thead>
+                        <tr>
+                            {%for x in varDesc%}
+                                <th>{{x.upper()}}</th>
+                            {%endfor%}
+                        </tr>
+                            
+                        </thead>
+                        <tbody>
+                            {%for x in varDesc.index%}
+                            <tr>
+                               {%for c in varDesc.iloc[x]%}
+                               {%if (varDesc.iloc[x].index[6]=='missing_values'):%}
+                                    <td>{{ c if c is not none }}</td>
+                                {%else:%}
+                                <td><center>{{ c if c is not none }}</center></td>
+                                {%endif%}
+                                {%endfor%}
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                    <table style="border:1px solid"><thead><tr><th>Possible Answers</th></tr></thead>
+                        <tbody><tr><td>age: age in years</td> </tr>
+                         <tr><td>sex: 0=female; 1=male</td></tr>
+                         <tr><td>cp: 1=typical angina; 2=atypical angina; 3=non-anginal pain; 4=asymptomatic</td> </tr>
+                         <tr><td>trestbps: resting blood pressure (in nm Hg on admission to the Hospital)</td> </tr>
+                         <tr><td>chol: serum cholestoral in mg/d</td> </tr>
+                         <tr><td>fbs: (fasting blood sugar > 120 mg/dl)  (1 = true; 0 = false)</td> </tr>
+                         <tr><td>restecg: resting electrocardiographic results 0=normal; 1=ST-T wave abnormality; 2=probable or definite left ventricular hypertrophy by Estes criteria</td> </tr>
+                         <tr><td>thalach: maximum heart rate achieved</td> </tr>
+                         <tr><td>exang: exercise induced angina (1 = yes; 0 = no)</td> </tr>
+                         <tr><td>oldpeak: ST depression induced by exercise relative to rest</td> </tr>
+                         <tr><td>slope: the slope of the peak exercise ST segment 1: upsloping; 2:flat; 3:downsloping</td> </tr>
+                         <tr><td>ca: number of major vessels (0-3) colored by flourosopy</td> </tr>
+                         <tr><td>thal: 3 = normal; 6 = fixed defect; 7 = reversable defect</td> </tr>
+                         <tr><td>num: diagnosis of heart disease (angiographic disease status) 0:<50% diameter noarrowing; 1:>50% diameter narrowing</50></td> </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>We found this dataset in the 
+                    <a href="https://archive.ics.uci.edu/dataset/45/heart+disease" target="_blank">
+                        UC Irvine Machine Learning Repository
+                    </a></p>
+                    <p>Originally published <a href="https://doi.org/10.1016/0002-9149%2889%2990524-9" target="_blank">https://doi.org/10.1016/0002-9149%2889%2990524-9</a>
+                    </p>
+
+            </div>
+            <div>
+                <h3>ORIGINAL DATA SAMPLE</h3>
+                <!-- <table>
+                    <thead>
+                        <tr>
+                        {%for x in raw.description:%}
+                            
+                            <th>{{x[0]}}</th>
+                            
+                        {%endfor%}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for x in raw:%}
+                            <tr>
+                                {%for xx in x:%}
+                                <td>{{xx}}</td>
+                                {%endfor%}
+                            </tr>
+                        {%endfor%}
+                    </tbody>  
+                </table> -->
+                <table style="border:1px solid">
+                    <thead>
+                    <tr>
+                        {%for x in raw%}
+                            <th>{{x.upper()}}</th>
+                        {%endfor%}
+                    </tr>
+                        
+                    </thead>
+                    <tbody>
+                        {%for x in raw.index%}
+                        <tr>
+                           {%for c in raw.loc[x]%}
+                            <td>{{ c }}</td>
+                            {%endfor%}
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+
+            </div>
+            <div>
+                <h3>ENCODED DATA SAMPLE</h3>
+                <table style="border:1px solid">
+                    <thead>
+                        <tr>
+                        {%for x in clean.description:%}
+                            
+                            <th>{{x[0]}}</th>
+                            
+                        {%endfor%}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for x in clean:%}
+                            <tr>
+                                {%for xx in x:%}
+                                <td>{{xx}}</td>
+                                {%endfor%}
+                            </tr>
+                        {%endfor%}
+                    </tbody>  
+                </table>
+            </div>
+        </div>
+        <div><a href="{{url_for('welcome')}}">Back</a></div>
+    </div>
+</body>
+</html>

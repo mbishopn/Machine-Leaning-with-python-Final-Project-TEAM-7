@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLC Cornwall - Machine Learning with Python - GROUP 7</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>Regression Dataset</h1>
+            <div>
+                <p>The dataset we selected to work contains data about eating habits and physical condition in individuals from
+                Mexico, Peru and Colombia to estimate their Obesity Levels.</p>
+                <div style="display:flex;">
+                    <table style="border:1px solid">
+                        <thead>
+                        <tr>
+                            {%for x in varDesc%}
+                                <th>{{x.upper()}}</th>
+                            {%endfor%}
+                        </tr>
+                            
+                        </thead>
+                        <tbody>
+                            {%for x in varDesc.index%}
+                            <tr>
+                               {%for c in varDesc.iloc[x]%}
+                               {%if (varDesc.iloc[x].index[6]=='missing_values'):%}
+                                    <td>{{ c if c is not none }}</td>
+                                {%else:%}
+                                <td><center>{{ c if c is not none }}</center></td>
+                                {%endif%}
+                                {%endfor%}
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                    <table style="border:1px solid"><thead><tr><th>Possible Answers</th></tr></thead>
+                        <tbody><tr><td>Female, Male</td> </tr>
+                         <tr><td>Numeric value</td></tr>
+                         <tr><td>Numeric value in meters</td> </tr>
+                         <tr><td>Numeric value in kilograms</td> </tr>
+                         <tr><td>Yes, No</td> </tr>
+                         <tr><td>Yes, No</td> </tr>
+                         <tr><td>Never, Sometimes, Always</td> </tr>
+                         <tr><td>Between 1-2, 3, >3</td> </tr>
+                         <tr><td>No, Sometimes, Frequently, Always</td> </tr>
+                         <tr><td>Yes, No</td> </tr>
+                         <tr><td>Less than 1L, 1-2L, >2L</td> </tr>
+                         <tr><td>Yes, No</td> </tr>
+                         <tr><td>Do not have, 1 or 2 days, 2 or 4 days, 4 or 5 days</td> </tr>
+                         <tr><td>0-2 hours, 3-5 hours, >5 hours</td> </tr>
+                         <tr><td>I do not drink, Sometimes, Frequently, Always</td> </tr>
+                         <tr><td>Automobile, Motorbike, Bike, Public Transportation, Walking</td> </tr>
+                         <tr><td>Insufficient Weight, Normal Weight, Overweight Level I, Overweight Level II, Obesity Type I, Obesity Type II, and Obesity Type III</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>We found this dataset in the 
+                    <a href="https://archive.ics.uci.edu/dataset/544/estimation+of+obesity+levels+based+on+eating+habits+and+physical+condition" target="_blank">
+                        UC Irvine Machine Learning Repository
+                    </a></p>
+                    <p>You can also find the original article of how this dataset was originated. Amazing to find that 
+                        77% of this data was synthetically generated. <a href="https://doi.org/10.1016/j.dib.2019.104344" target="_blank">https://doi.org/10.1016/j.dib.2019.104344</a>
+                    </p>
+
+                    Even when this dataset clean, we still had to convert some categorical features into numeric so we could use them with
+                    our models. Down here you have a sample of data before and after we proccessed it.
+            </div>
+            <div>
+                <h3>ORIGINAL DATA SAMPLE</h3>
+                <!-- <table>
+                    <thead>
+                        <tr>
+                        {%for x in raw.description:%}
+                            
+                            <th>{{x[0]}}</th>
+                            
+                        {%endfor%}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for x in raw:%}
+                            <tr>
+                                {%for xx in x:%}
+                                <td>{{xx}}</td>
+                                {%endfor%}
+                            </tr>
+                        {%endfor%}
+                    </tbody>  
+                </table> -->
+                <table style="border:1px solid">
+                    <thead>
+                    <tr>
+                        {%for x in raw%}
+                            <th>{{x.upper()}}</th>
+                        {%endfor%}
+                    </tr>
+                        
+                    </thead>
+                    <tbody>
+                        {%for x in raw.index%}
+                        <tr>
+                           {%for c in raw.loc[x]%}
+                            <td>{{ c }}</td>
+                            {%endfor%}
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+
+            </div>
+            <div>
+                <h3>ENCODED DATA SAMPLE</h3>
+                <table style="border:1px solid">
+                    <thead>
+                        <tr>
+                        {%for x in clean.description:%}
+                            
+                            <th>{{x[0]}}</th>
+                            
+                        {%endfor%}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for x in clean:%}
+                            <tr>
+                                {%for xx in x:%}
+                                <td>{{xx}}</td>
+                                {%endfor%}
+                            </tr>
+                        {%endfor%}
+                    </tbody>  
+                </table>
+            </div>
+        </div>
+        <div><a href="{{url_for('welcome')}}">Back</a></div>
+    </div>
+</body>
+</html>
