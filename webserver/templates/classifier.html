@@ -10,10 +10,10 @@
     <h1>Welcome to the Classifier Model Page</h1>
 
     <p>Fill this form and based on the input the model will predict if there's presence of heart disease.</p>
-
-    <form action="/cla_answers" method="POST">
+    {% block content %}
+    <form action="/classifier" method="POST">
         <p>Please enter in your Age:<input type="text" id="age" name="age" placeholder="Age"></p>
-        <p>Please enter in you Sex:<input type="text" id="sex" name="sec" placeholder="male/female"></p>
+        <p>Please enter in you Sex:<input type="text" id="sex" name="sex" placeholder="male/female"></p>
         <p>Please enter in your CP:<input type="text" id="cp" name="cp" placeholder="CP"></p>
         <p>Please enter in your TrestBPS:<input type="text" id="trest" name="trest" placeholder="TrestBPS"></p>
         <p>Please enter in your Chol:<input type="text" id="chol" name="chol" placeholder="Chol"></p>
@@ -26,8 +26,11 @@
         <p>Please enter in your CA:<input type="text" id="ca" name="ca" placeholder="CA"></p>
         <p>Please enter in your Thal:<input type="text" id="thal" name="thal" placeholder="Thal"></p>
         <br/>
-        <input type="submit" value="submit">
+        <input type="submit" value="data">
     </form>
-
+    {% endblock %}
+    {% if pred:%}
+    <div>{{"NO HEART DISEASE PRESENT" if pre!=0 else "HEART DISEASE PRESENT"}}</div>
+    {%endif%}
 </body>
 </html>

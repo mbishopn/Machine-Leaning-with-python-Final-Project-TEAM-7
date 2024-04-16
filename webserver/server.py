@@ -22,7 +22,8 @@ cvarDesc=heartDisease.variables
 jl_filedir = Path("./trained_models")
 jl_filedir.mkdir(parents=True,exist_ok=True)
 jl_filepath=jl_filedir / 'reg_obesity.joblib'
-rf3_jl=joblib.load(jl_filepath)
+regressor=joblib.load(jl_filepath)
+jl_filepath=jl_filedir / 'class_heart.joblib'
 
 
 app=Flask(__name__)
@@ -41,9 +42,33 @@ def about():
 def regressor():
         return render_template('regressor.html')
 
-@app.route("/classifier")
+@app.route("/classifier", methods=['GET','POST'])
 def classifier():
-        return render_template('classifier.html')
+        classifier=joblib.load(jl_filepath)
+        data=''
+        if request.method=='POST':
+                arr=[]
+                data=pd.DataFrame(columns=['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal','ca_na','thal_na'])
+                arr.append(request.form['age'])
+                arr.append(request.form['sex'])
+                arr.append(request.form['cp'])
+                arr.append(request.form['trest'])
+                arr.append(request.form['chol'])
+                arr.append(request.form['fbs'])
+                arr.append(request.form['restecg'])
+                arr.append(request.form['thalach'])
+                arr.append(request.form['exang'])
+                arr.append(request.form['oldpeak'])
+                arr.append(request.form['slope'])
+                arr.append(request.form['ca'])
+                arr.append(request.form['thal'])
+                arr.append(0)
+                arr.append(0)
+                data=classifier.predict([arr])
+                print(data)
+        else:
+                data="Fill the form"
+        return render_template('classifier.html', pred=data)
 
 @app.route("/data/<model>")
 def data(model):
