@@ -12,19 +12,19 @@
     <p>Fill this form and based on the input the model will predict if there's presence of heart disease.</p>
     {% block content %}
     <form action="/classifier" method="POST">
-        <p>Please enter in your Age:<input type="number" id="age" name="age" placeholder="Age"></p>
-        <p>Please enter in you Sex:<input type="text" id="sex" name="sex" placeholder="male/female"></p>
-        <p>Please enter in your CP:<input type="text" id="cp" name="cp" placeholder="CP"></p>
-        <p>Please enter in your TrestBPS:<input type="text" id="trestbps" name="trestbps" placeholder="TrestBPS"></p>
-        <p>Please enter in your Chol:<input type="text" id="chol" name="chol" placeholder="Chol"></p>
-        <p>Please enter in your FBS:<input type="text" id="fbs" name="fbs" placeholder="FBS"></p>
-        <p>Please enter in your Restecg:<input type="text" id="restecg" name="restecg" placeholder="Restecg"></p>
-        <p>Please enter in your Thalach:<input type="text" id="thalach" name="thalach" placeholder="Thalach"></p>
-        <p>Please enter in your Exang:<input type="text" id="exang" name="exang" placeholder="Exang"></p>
-        <p>Please enter in your Oldpeak:<input type="text" id="oldpeak" name="oldpeak" placeholder="Oldpeak"></p>
-        <p>Please enter in your Slope:<input type="text" id="slope" name="slope" placeholder="Slope"></p>
-        <p>Please enter in your CA:<input type="text" id="ca" name="ca" placeholder="CA"></p>
-        <p>Please enter in your Thal:<input type="text" id="thal" name="thal" placeholder="Thal"></p>
+        <p>Age:<input type="number" min="0" max="120" id="age" name="age" placeholder="Age"></p>
+        <p>Sex:<select type="text" id="sex" name="sex" placeholder="male/female"><option value="0">Female</option><option value="1">Male</option></select></p>
+        <p>CP:<select type="text" id="cp" name="cp" placeholder="CP"><option value="1">Typical Angina</option><option value="2">Atypical Angina</option><option value="3">Non Anginal</option><option value="4">Asymptomatic</option></select></p>
+        <p>Resting blood pressure (nmHg):<input type="number" min="70" max="200" type="text" id="trestbps" name="trestbps" placeholder="in nm Hg"></p>
+        <p>Cholesterol serum (mg/d):<input type="number" min="100" max="600" id="chol" name="chol" placeholder="Chol"></p>
+        <p>Fasting blood sugar > 120mg/dl?:<select type="text" id="fbs" name="fbs" placeholder="FBS"><option value="0">No</option><option value="1">Yes</option></select></p>
+        <p>Resting ECG results:<select type="text" id="restecg" name="restecg" placeholder="Restecg"><option value="0">Normal</option><option value="1">ST-T wave abnormality</option><option value="2">Probable/definite left ventricular hypertrophy</option></select></p>
+        <p>Maximum heart rate achieved:<input min="40" max="300" type="number" id="thalach" name="thalach" placeholder="bpm"></p>
+        <p>Exercise induced angina:<select type="text" id="exang" name="exang" placeholder="Exang"><option value="0">No</option><option value="1">Yes</option></select></p>
+        <p>ST depression induced by exercise relative to rest:<input type="number" min="0" max="10" id="oldpeak" name="oldpeak" placeholder="Oldpeak"></p>
+        <p>Slope of the peak exercise ST segment:<select type="text" id="slope" name="slope" placeholder="Slope"><option value="0">Upsloping</option><option value="1">Flat</option><option value="2">Downsloping</option></select></p>
+        <p>Number of major vessels (0-3) colored by flourosopy:<input type="number" min="0" max="3" step="1" id="ca" name="ca" placeholder="CA"></p>
+        <p>Thal:<select type="text" id="thal" name="thal" placeholder="Thal"><option value="3">normal</option><option value="6">Fixed defect</option><option value="7">Reversable defect</option></select></p>
         <input type="hidden" id="ca_na" name="ca_na" value="0">
         <input type="hidden" id="thal_na" name="thal_na" value="0">
         <br/>
