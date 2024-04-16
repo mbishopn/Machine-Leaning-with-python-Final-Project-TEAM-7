@@ -3,10 +3,10 @@ import sqlite3
 from pathlib import Path
 import pandas as pd
 from ucimlrepo import fetch_ucirepo
-
 import joblib
-craw=pd.DataFrame
-rraw=pd.DataFrame
+
+craw=pd.DataFrame()
+rraw=pd.DataFrame()
 
 obesity = fetch_ucirepo(id=544)
 rraw=obesity.data.original
@@ -41,7 +41,7 @@ def about():
 def regressor():
         jl_filepath=jl_filedir / 'reg_obesity.joblib'
         regressor=joblib.load(jl_filepath)
-        data=""
+        data=[""]
         if request.method=='POST':
                 arr=[]
                 data=pd.DataFrame(columns=['Age','Height','FCVC','NCP','CH2O','FAF','TUE','Gender','family_history_with_overweight','FAVC','CAEC','SCC','CALC','MTRANS','Height_na'])

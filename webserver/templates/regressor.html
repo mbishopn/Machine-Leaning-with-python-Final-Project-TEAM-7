@@ -13,20 +13,20 @@
     <p>Here is as simple form for Estimation of Obesity Levels Based On Eating Habits and Phyiscal Condition</p>
     {% block content %}
     <form action='/regressor' method="POST">
-        <p>AGE:<input type="text" id="Age" name="Age" placeholder="Age"></p>
-        <p>GENDER:<input type="text" id="Gender" name="Gender" placeholder="Gender"></p>
-        <p>HEIGHT(meters):<input type="text" id="Height" name="Height" placeholder="Height"></p>
-        <p>Usually eat vegetables:<input type="text" id="FCVC" name="FCVC" placeholder="Weight"></p>
-        <p>How many meals per day:<input type="text" id="NCP" name="NCP" placeholder="FCVC"></p>
-        <p>How much water do you drink:<input type="text" id="CH2O" name="CH2O" placeholder="NCP"></p>
-        <p>How often do you workout:<input type="text" id="FAF" name="FAF" placeholder="CH20"></p>
-        <p>Time spent in front of screens:<input type="text" id="TUE" name="TUE" placeholder="FAF"></p>
-        <p>Family member suffered or suffers from overweight?:<input type="text" id="family_history_with_overweight" name="family_history_with_overweight" placeholder="family_history_with_overweight"></p>
-        <p>Hypercaloric food intake frequently?:<input type="text" id="FAVC" name="FAVC" placeholder="FAVC"></p>
-        <p>Snacks between meals?:<input type="text" id="CAEC" name="CAEC" placeholder="CAEC"></p>
-        <p>Do you monitor your calories everyday?:<input type="text" id="SCC" name="SCC" placeholder="SCC"></p>
-        <p>How often drink alcohol:<input type="text" id="CALC" name="CALC" placeholder="CALC"></p>
-        <p>Usual transportation:<input type="text" id="TUE" name="MTRANS" placeholder="MTRANS"></p>
+        <p>AGE:<input type="number" min="0" max="120" id="Age" name="Age" placeholder="Age"></p>
+        <p>GENDER:<select id="Gender" name="Gender" placeholder="Gender"><option value="1">Female</option><option value="2">Male</option></select></p>
+        <p>HEIGHT(meters):<input type="number" min="0" max="3" step="0.1" id="Height" name="Height" placeholder="Height"></p>
+        <p>Usually eat vegetables:<select type="text" id="FCVC" name="FCVC" placeholder="FCVC"><option value="1">No</option><option value="2">Yes</option></select></p>
+        <p>How many meals per day:<select  type="text" id="NCP" name="NCP" placeholder="NCP"><option value="0">1-2</option><option value="1">3</option><option value="2">>3</option></select></p>
+        <p>How much water do you drink:<select type="text" id="CH2O" name="CH2O" placeholder="CH2O"><option value="0">&#60;1L</option><option value="1">1-2L</option><option value="2">&#62;2L</option></select></p>
+        <p>How often do you workout:<select type="text" id="FAF" name="FAF" placeholder="FAF"><option value="0">Never</option><option value="1">Sometimes</option><option value="2">Frequently</option><option value="3">Always</option></select></p>
+        <p>Hours spent in front of screens:<select type="text" id="TUE" name="TUE" placeholder="TUE"><option value="0">0-2</option><option value="1">3-5</option><option value="2">&#62;5</option></select></p>
+        <p>Family member suffered or suffers from overweight?:<select type="text" id="family_history_with_overweight" name="family_history_with_overweight" placeholder="family_history_with_overweight"><option value="1">No</option><option value="2">Yes</option></select></p>
+        <p>Hypercaloric food intake frequently?:<select type="text" id="FAVC" name="FAVC" placeholder="FAVC"><option value="1">No</option><option value="2">Yes</option></select></p>
+        <p>Snacks between meals?:<select type="text" id="CAEC" name="CAEC" placeholder="CAEC"><option value="0">Never</option><option value="1">Sometimes</option><option value="2">Frequently</option><option value="3">Always</option></select></p>
+        <p>Do you monitor your calories everyday?:<select type="text" id="SCC" name="SCC" placeholder="SCC"><option value="1">No</option><option value="2">Yes</option></select></p>
+        <p>How often drink alcohol:<select type="text" id="CALC" name="CALC" placeholder="CALC"><option value="0">Never</option><option value="1">Sometimes</option><option value="2">Frequently</option><option value="3">Always</option></select></p>
+        <p>Usual transportation:<select type="text" id="TUE" name="MTRANS" placeholder="MTRANS"><option value="1">Automobile</option><option value="2">Motorbike</option><option value="3">Bike</option><option value="4">Public transportation</option><option value="5">Walking</option></select></p>
         <input type="hidden" id="Height_na" name="Height_na" value="0">
         <br/>
         <input type="submit" value="submit">
