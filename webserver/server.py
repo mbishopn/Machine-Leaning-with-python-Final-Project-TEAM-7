@@ -3,7 +3,7 @@ import sqlite3
 from pathlib import Path
 import pandas as pd
 from ucimlrepo import fetch_ucirepo
-import pandas as pd
+
 import joblib
 craw=pd.DataFrame
 rraw=pd.DataFrame
@@ -23,7 +23,7 @@ jl_filedir = Path("./trained_models")
 jl_filedir.mkdir(parents=True,exist_ok=True)
 jl_filepath=jl_filedir / 'reg_obesity.joblib'
 regressor=joblib.load(jl_filepath)
-jl_filepath=jl_filedir / 'class_heart.joblib'
+
 
 
 app=Flask(__name__)
@@ -44,10 +44,12 @@ def regressor():
 
 @app.route("/classifier", methods=['GET','POST'])
 def classifier():
+        jl_filepath=jl_filedir / 'class_heart.joblib'
         classifier=joblib.load(jl_filepath)
-        data=''
+
         if request.method=='POST':
                 arr=[]
+                
                 data=pd.DataFrame(columns=['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal','ca_na','thal_na'])
                 arr.append(request.form['age'])
                 arr.append(request.form['sex'])

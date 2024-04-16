@@ -29,8 +29,16 @@
         <input type="submit" value="data">
     </form>
     {% endblock %}
-    {% if pred:%}
-    <div>{{"NO HEART DISEASE PRESENT" if pre!=0 else "HEART DISEASE PRESENT"}}</div>
-    {%endif%}
+    <div>
+        {%if pred[0]==0:%}
+        NO HEART DISEASE PRESENT
+        {%endif%}
+        {%if pred[0]==1:%}
+        HEART DISEASE PRESENT
+        {%else:%}
+        Fill the form to make a prediction
+        {%endif%}
+    </div>
+
 </body>
 </html>
